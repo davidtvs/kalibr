@@ -1,7 +1,6 @@
 import sm
 import os
 import numpy as np
-import sys
 import multiprocessing
 try:
    import queue
@@ -44,7 +43,7 @@ def extractCornersFromDataset(dataset, detector, multithreading=False, numProces
             if "sched_getaffinity" in dir(os):
                 numProcesses = len(os.sched_getaffinity(0))
             else:
-                numProcesses = os.cpu_count() or 1
+                numProcesses = multiprocessing.cpu_count()
 
             # Leave one CPU core free
             numProcesses = max(1, numProcesses - 1)
