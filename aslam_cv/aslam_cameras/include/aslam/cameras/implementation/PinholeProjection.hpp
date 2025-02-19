@@ -783,7 +783,7 @@ bool PinholeProjection<DISTORTION_T>::initializeIntrinsics(const std::vector<Gri
     std::cout << "Initialization of focal length failed. Provide manual initialization: " << std::endl;
     const char* manual_input = std::getenv("KALIBR_MANUAL_FOCAL_LENGTH_INIT");
     double input_guess;
-    if(manual_input != nullptr) {
+    if(manual_input != nullptr && manual_input[0] != '\0') {
       input_guess = std::stod(manual_input);
     } else {
       std::cin >> input_guess;
